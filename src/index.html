@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Address component</title>
+  <meta name="description" content="ES6 + lit web components">
+  <script>
+    // Data model
+    const dataModel = {
+        "contract": {
+            "administrativeData": {
+                "validFrom": "2021-01-01"
+            },
+            "contractModules": {
+                "HOUSEHOLD": {
+                    "key": "HOUSEHOLD",
+                    "name": "Household Contents",
+                    "comments": "The flat of the policy holder is 100 square meters"
+                },
+                "BICYCLE": {
+                    "key": "BICYCLE",
+                    "name": "Bicycle",
+                    "comments": "The policyholder is happy to insure his new E-Bike also within the contract"
+                }
+            }
+        }
+    };
+
+    // Method to update the debugger 
+    const updateDebugger = function(){
+      document.querySelector('.debugger').innerHTML = JSON.stringify(dataModel, null, 2);
+    }
+
+    // Page load listener on document ready
+    document.addEventListener('DOMContentLoaded', (event) => {
+
+      // Update debugger
+      updateDebugger();
+
+      // Event listeners
+      document.querySelector('#dateInput').addEventListener('change', function(e){
+        dataModel.contract.administrativeData.validFrom = e.target.value;
+        updateDebugger();
+      })
+    })
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+
+      <h1>Policy form</h1>
+      <p>Fill the form to adjust your policy details.</p>
+
+      <label>Valid From: </label>
+      <input type="date" id="dateInput" />
+
+      <!--
+        Using reusable web component for the contracts as per instructions
+      -->
+      <contract-form contractType="HOUSEHOLD"></contract-form>
+      <contract-form contractType="BICYCLE"></contract-form>
+
+      <h2>Debug</h2>
+      
+    </div>    
+    <pre>
+      <code class="debugger"></code>
+    </pre>
+  
+</body>
+</html>

@@ -1,0 +1,37 @@
+$body-color: black;
+
+body {
+  color: $body-color;
+  font-family: sans-serif;
+}
+
+p {
+  margin-bottom: 50px;
+}
+
+h2 {
+  margin-top: 80px;
+}
+
+h1,
+h2,
+p {
+  text-align: center;
+}
+
+code {
+  font-size: 120%;
+}
+
+pre code {
+  margin-bottom: 100px;
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
+
+.wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
